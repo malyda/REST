@@ -1,0 +1,34 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:REST"
+        xmlns:Entity="clr-namespace:REST.Entity" x:Class="REST.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="452.62" Width="525"
+       >
+    <Grid>
+        <Canvas>
+            <Grid Height="80" Canvas.Top="0" >
+                <Button x:Name="button" Content="Get Data" Click="GetData_Click" Margin="408,10,34,10" Width="75"/>
+                <Label x:Name="lblStatus" Content="Choose action" Margin="10,10,206,37"/>
+                <Button x:Name="button_freeze" Content="Freeze" Click="Freeze_Click" Margin="316,10,126,10" Width="75"/>
+                <Label x:Name="lblTime" Margin="10,38,290,10" Content="time"></Label>
+            </Grid>
+        </Canvas>
+        <ListBox Margin="0,84,0,0" ItemsSource="{Binding ListCollection}"  x:Name="ListBox">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Name"/>
+                        <TextBlock Text="{Binding name}"/>
+                        <Label Content="Surname"/>
+                        <TextBlock Text="{Binding surname}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+    </Grid>
+</Window>
