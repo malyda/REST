@@ -100,11 +100,33 @@ namespace REST
         private void GetData_Click(object sender, RoutedEventArgs e)
         {
             GetPersonListAndPopulateAsync();
+            GetCustomEntityFromApi();
         }
 
         private void ChangeStatusMessage(string message)
         {
             lblStatus.Content = message;
+        }
+
+        /// <summary>
+        /// Download data from server and populate them
+        /// </summary>
+        /// <returns></returns>
+        private async void GetCustomEntityFromApi()
+        {
+            Console.WriteLine("Is current thread in background: " + Thread.CurrentThread.IsBackground);
+
+            Rest webClient = new Rest();
+            CustomEntity ce = await webClient.GetDataFromAnotherAPI();
+
+            if (ce != null)
+            {
+                lblCustom.Content = ce.ToString();
+            }
+            else
+            {
+                ChangeStatusMessage("Error connecting to server");
+            }
         }
     }
 }

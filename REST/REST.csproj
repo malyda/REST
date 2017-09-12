@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entity\CustomEntity.cs" />
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Parsers\JsonParser.cs" />
     <Compile Include="WebClient\Rest.cs" />

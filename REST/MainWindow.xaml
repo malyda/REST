@@ -10,10 +10,11 @@
        >
     <Grid>
         <Canvas>
-            <Grid Height="80" Canvas.Top="0" >
+            <Grid Height="100" Canvas.Top="0" >
                 <Button x:Name="button" Content="Get Data" Click="GetData_Click" Margin="408,10,34,10" Width="75"/>
                 <Label x:Name="lblStatus" Content="Choose action" Margin="10,10,206,37"/>
                 <Label x:Name="lblTime" Margin="10,38,290,10" Content="time"></Label>
+                <Label x:Name="lblCustom" Margin="10,60,290,10" >Custom entity</Label>
             </Grid>
         </Canvas>
         <ListBox Margin="0,84,0,0" ItemsSource="{Binding ListCollection}"  x:Name="ListBox">

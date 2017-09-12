@@ -33,5 +33,24 @@ namespace REST.WebClient
             return await parser.ParseStringAsync<List<Person>>(response.Content);
 
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<CustomEntity> GetDataFromAnotherAPI()
+        {
+            string url = "https://jsonplaceholder.typicode.com";
+            var client = new RestClient(url);
+
+            var request = new RestRequest("posts/1", Method.GET);
+
+            IRestResponse response = client.Execute(request);
+
+            IParser parser = new JsonParser();
+            return await parser.ParseStringAsync<CustomEntity>(response.Content);
+
+        }
     }
 }
