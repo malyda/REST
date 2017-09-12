@@ -23,7 +23,7 @@ using REST.Entity;
 using System.Timers;
 using System.Windows.Threading;
 using REST.Interfaces;
-using REST.Tools;
+
 using REST.WebClient;
 
 namespace REST
@@ -63,38 +63,29 @@ namespace REST
                lblTime.Content = DateTime.Now.ToString("ffff");
             }, Dispatcher);
         }
+
         /// <summary>
-        /// In background thread download data from server and populate them
+        /// Download data from server and populate them
         /// </summary>
         /// <returns></returns>
-        private async Task GetPersonListAndPopulateAsync()
-       {
-            await Task.Run(() =>
-            {
-                Console.WriteLine(Thread.CurrentThread.IsBackground);
+        private async void GetPersonListAndPopulateAsync()
+        {
+                Console.WriteLine("Is current thread in background: "+ Thread.CurrentThread.IsBackground);
 
-                IWebClient webClient = new Rest();
-                List<Person> persons = webClient.GetPersonsListAsync().Result;
+                Rest webClient = new Rest();
+                List<Person> persons = await webClient.GetPersonsListAsync();
 
                 if (persons != null && persons.Count != 0)
                 {
                     ObservableCollection<Person> pl = new ObservableCollection<Person>(persons);
-
-                    this.Dispatcher.InvokeAsync(() =>
-                    {
-                        ChangeStatusMessage("OK");
-                        SetPersonsItemSource(pl);
-                    });
+                    ChangeStatusMessage("OK");
+                    SetPersonsItemSource(pl);
                 }
                 else
                 {
-                    this.Dispatcher.InvokeAsync(() =>
-                    {
-                        ChangeStatusMessage( "Error connecting to server" );
-                    }); 
+                    ChangeStatusMessage( "Error connecting to server" );
                 }
-            });
-       }
+        }
 
         /// <summary>
         /// Set persons list item source
@@ -106,16 +97,9 @@ namespace REST
             ListBox.ItemsSource = ListCollection;
         }
 
-        
         private void GetData_Click(object sender, RoutedEventArgs e)
         {
             GetPersonListAndPopulateAsync();
-        }
-
-        private void Freeze_Click(object sender, RoutedEventArgs e)
-        {
-            Freezer freezer = new Freezer();
-            freezer.Freeze((Button) e.Source, this);
         }
 
         private void ChangeStatusMessage(string message)

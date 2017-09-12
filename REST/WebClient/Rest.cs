@@ -9,7 +9,7 @@ using REST.Interfaces;
 
 namespace REST.WebClient
 {
-    class Rest : Interfaces.IWebClient
+    class Rest
     {
         /// <summary>
         /// Downloads persons list from web source async, parse form JSON to Person entity

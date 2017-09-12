@@ -13,7 +13,6 @@
             <Grid Height="80" Canvas.Top="0" >
                 <Button x:Name="button" Content="Get Data" Click="GetData_Click" Margin="408,10,34,10" Width="75"/>
                 <Label x:Name="lblStatus" Content="Choose action" Margin="10,10,206,37"/>
-                <Button x:Name="button_freeze" Content="Freeze" Click="Freeze_Click" Margin="316,10,126,10" Width="75"/>
                 <Label x:Name="lblTime" Margin="10,38,290,10" Content="time"></Label>
             </Grid>
         </Canvas>

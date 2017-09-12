@@ -68,9 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interfaces\IParser.cs" />
-    <Compile Include="Interfaces\IWebClient.cs" />
-    <Compile Include="Tools\Parsers\JsonParser.cs" />
-    <Compile Include="Tools\Freezer.cs" />
+    <Compile Include="Parsers\JsonParser.cs" />
     <Compile Include="WebClient\Rest.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
